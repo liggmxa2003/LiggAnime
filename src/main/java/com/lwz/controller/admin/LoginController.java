@@ -26,11 +26,6 @@ public class LoginController {
     public String loginPage(){
         return "admin/login";
     }
-    //去注册页面
-    @GetMapping("/register")
-    public String register(){
-        return "admin/register";
-    }
 
     //登录
     @GetMapping("/index")
@@ -69,26 +64,7 @@ public class LoginController {
         }
     }
 
-    /**
-     * 处理用户注册请求
-     *
-     * @param user 用户对象，包含用户信息如用户名和密码
-     * @param model 用于向视图传递数据的对象
-     * @return 返回视图名称或重定向地址
-     *
-     * 当用户成功注册时，向模型添加成功标志，并返回到注册页面显示成功信息
-     * 如果用户名已存在，向模型添加错误信息，并重定向到注册页面显示错误信息
-     */
-    @PostMapping("/register")
-    public String handleRegister(User user, Model model) {
-        if (userService.registerUser(user)) {
-            model.addAttribute("success", true);//用于向视图传递数据的对象
-            return "admin/register";
-        } else {
-            model.addAttribute("error", "用户名已存在");
-            return "redirect:register";
-        }
-    }
+
 
 //    处理用户登出请求的控制器方法
     @GetMapping("/logout")

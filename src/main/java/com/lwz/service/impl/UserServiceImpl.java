@@ -27,11 +27,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-//    注册用户功能实现
+    //    注册用户功能实现
     @Override
     public boolean registerUser(User user) {
         // 判断用户是否已存在
-        if (userDao.queryByUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
+        if (userDao.queryUser(user.getUsername()) != null) {
             return false;
         }
         // 用户不存在，调用DAO层的用户注册方法
