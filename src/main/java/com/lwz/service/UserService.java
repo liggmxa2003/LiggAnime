@@ -11,4 +11,10 @@ public interface UserService {
 
     //注册
     public boolean registerUser(User user);
+
+    //id查询用户
+    public User queryUserById(Long id);
+
+    //修改用户信息
+    public boolean updateUser(User user);
 }

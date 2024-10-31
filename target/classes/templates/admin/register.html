@@ -67,8 +67,9 @@
                         </div>
                         <button class="ui fluid large teal submit button">注  册</button>
                     </div>
-                    <div th:if="${error}">
-                        <p class="ui error message" th:text="${error}"></p>
+                    <div class="ui error message" id="error-message"></div>
+                    <div class="ui mini negative message" th:unless="${#strings.isEmpty(error)}" th:text="${error}">
+                        用户名或密码错误
                     </div>
                 </form>
                 <br>

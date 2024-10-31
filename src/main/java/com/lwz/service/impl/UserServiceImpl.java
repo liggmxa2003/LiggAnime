@@ -38,4 +38,17 @@ public class UserServiceImpl implements UserService {
         userDao.registerUser(user);
         return true;
     }
+
+    //根据id查询用户
+    @Override
+    public User queryUserById(Long id) {
+        User user = userDao.queryUserById(id);
+        return user;
+    }
+
+    //修改用户信息
+    @Override
+    public boolean updateUser(User user) {
+        return userDao.updateUser(user);
+    }
 }

@@ -9,6 +9,11 @@
         select * from t_user where username = #{username} and password = #{password};
     </select>
 
+<!--    根据账号查询用户-->
+    <select id="queryUser" parameterType="String" resultType="com.lwz.pojo.User">
+        select * from t_user where username = #{username}
+    </select>
+
     <!-- 插入新用户注册信息到数据库 -->
     <insert id="registerUser" parameterType="com.lwz.pojo.User">
         insert into t_user (username, password, nickname, email)

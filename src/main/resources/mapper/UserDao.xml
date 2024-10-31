@@ -4,7 +4,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lwz.dao.UserDao">
 
-<!--        根据用户名和密码查询用户信息-->
+    <resultMap id="user" type="com.lwz.pojo.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="nickname" column="nickname"/>
+        <result property="email" column="email"/>
+        <result property="avatar" column="avatar"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <collection property="blogs" ofType="com.lwz.pojo.Anime">
+            <id property="id" column="aid"/>
+            <result property="title" column="title"/>
+        </collection>
+    </resultMap>
+
+<!--    修改用户信息-->
+    <update id="updateUser" parameterType="com.lwz.pojo.User">
+        update t_user
+        <set>
+            <if test="username!=null">
+                username = #{username},
+            </if>
+            <if test="password!=null">
+                password = #{password},
+            </if>
+            <if test="nickname!=null">
+                nickname = #{nickname},
+            </if>
+            <if test="email!=null">
+                email = #{email},
+            </if>
+            <if test="avatar!=null">
+                avatar = #{avatar},
+            </if>
+        </set>
+    </update>
+    <!--        根据用户名和密码查询用户信息-->
     <select id="queryByUsernameAndPassword" resultType="com.lwz.pojo.User">
         select * from t_user where username = #{username} and password = #{password};
     </select>
@@ -12,6 +48,10 @@
 <!--    根据账号查询用户-->
     <select id="queryUser" parameterType="String" resultType="com.lwz.pojo.User">
         select * from t_user where username = #{username}
+    </select>
+<!--    根据id查询用户信息-->
+    <select id="queryUserById" resultType="com.lwz.pojo.User">
+        select * from t_user where id = #{id}
     </select>
 
     <!-- 插入新用户注册信息到数据库 -->

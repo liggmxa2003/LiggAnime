@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
 
+    //根据id查阅用户信息
+    User queryUserById(Long id);
+
     // 根据用户名和密码查询用户
     User queryByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
@@ -16,4 +19,7 @@ public interface UserDao {
 
     // 注册新用户
     int registerUser(User user);
+
+    //修改用户信息
+    boolean updateUser(User user);
 }
