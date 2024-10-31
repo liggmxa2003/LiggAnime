@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情页</title>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav th:replace="_fragments :: menu(0)">
+
+</nav>
+
+
+<!-- 中间内容 -->
+<div id="waypoint" class="m-padded-tb-large">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class=" wide column">
+                <!-- 番剧列表 -->
+
+                <!-- 列表内容 -->
+                <div class="ui attached segment">
+                    <button type="button" class="ui pink button" style="float: right;" onclick="window.history.go(-1)">返回</button>
+                    <div class="ui container">
+                        <div class="ui grid">
+                            <div class="four wide column">
+                                <!-- 图片展示 -->
+                                <h2 th:text="${blog.title}">更衣人偶</h2>
+                                <img src="#" th:src="@{${blog.firstPicture}}" alt=""
+                                     class="ui rounded image anime-border"
+                                     style="width: 100%; height: auto;">
+                            </div>
+
+                            <div class="twelve wide column">
+                                <br>
+
+                                <!-- 视频播放器 -->
+                                <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); background-color: #f0f0f0; border: 2px solid #e52baf; padding: 20px;">
+
+                                    <video width="100%" height="360" controls
+                                           style="display: block; border: none; background-color: #000; border-radius: 20px;"
+                                           src="#" th:src="@{${blog.flag}}" alt="">
+                                    </video>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="ui grid container">
+                            <div class="sixteen wide column">
+                                <!-- 文本内容 -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--视频播放-->
+                    <!--                    <div class="ui active inverted dimmer">-->
+                    <!--                        <div th:href="@{blog.Video}" class="ui text loader">加载中</div>-->
+                    <!--                    </div>-->
+                    <div class="ui  attached positive message">
+                        <h2>番剧简介</h2>
+                        <div id="content" class="typo typo-selection" th:utext="${blog.content}">
+                            <p>番剧描述替换位置</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--评论区域-->
+        <div class="ui bottom attached segment" th:if="${blog.commentabled}">
+            <!--留言区域列表-->
+            <div id="comment-container" class="ui teal segment">
+                <div th:fragment="commentList">
+                    <div class="ui threaded comments" style="max-width: 100%;">
+                        <h3 class="ui dividing header">评论区</h3>
+                        <div class="comment" th:each="comment : ${comments}">
+                            <a class="avatar">
+                                <img src="#" th:src="@{${comment.avatar}}">
+                            </a>
+                            <div class="content">
+                                <a class="author">
+                                    <span th:text="${comment.nickname}">Matt</span>
+                                    <div class="ui mini basic teal left pointing label m-padded-mini"
+                                         th:if="${comment.adminComment}">博主
+                                    </div>
+                                </a>
+                                <div class="metadata">
+                                    <span class="date"
+                                          th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                </div>
+                                <div class="text" th:text="${comment.content}">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply" data-commentid="1" data-commentnickname="Matt"
+                                       th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}"
+                                       onclick="reply(this)">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--提交留言表单-->
+
+            <div id="comment-form" class="ui form">
+                <input type="hidden" name="blog.id" th:value="${blog.id}">
+                <input type="hidden" name="parentComment.id" value="-1">
+                <div class="field">
+                    <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                </div>
+                <div class="fields">
+                    <div class="field m-mobile-wide m-margin-bottom-small">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input type="text" name="nickname" placeholder="姓名"
+                                   th:value="${session.user}!=null ? ${session.user.nickname}">
+                        </div>
+                    </div>
+                    <div class="field  m-margin-bottom-small m-mobile-wide">
+                        <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i
+                                class="edit icon"></i>发布
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<!--<div id="toolbar" class="ui vertical icon buttons m-fixed m-right-bottom" style="display: none">-->
+<!--    <a href="#" class="ui icon button"><i class="chevron up icon"></i> </a>-->
+<!--    <button href="" class="ui teal button">目录</button>-->
+<!--    <button href="" class="ui teal button">留言</button>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash;/*/<th:block>/*/&ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.6/dist/jquery.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>-->
+<!--<script src="/static/lib/waypoints/jquery.waypoints.min.js" th:src="@{lib/waypoints/jquery.waypoints.min.js}"></script>-->
+<!--&lt;!&ndash;/*/</th:block>/*/&ndash;&gt;-->
+
+<!-- 底部内容 -->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+
+
+<script th:inline="javascript">
+    $("#like-btn").click(function () {
+        //判断是否点赞按钮状态
+        let checked = $("#dianzantxt").attr("value");
+        //点赞按钮
+        if (checked == 0) {
+            $.ajax(/*[[@{/clickLike/{id}(id=${blog.id})}]]*/);
+            $("#like-count").text(parseInt($('#like-count').text()) + 1);
+            $("#dianzantxt").text("取消");
+            $("#dianzantxt").attr("value", 1);
+        } else { // 取消点赞按钮
+            $.ajax(/*[[@{/clickUnLike/{id}(id=${blog.id})}]]*/);
+            $("#like-count").text(parseInt($('#like-count').text()) - 1);
+            $("#dianzantxt").text("点赞");
+            $("#dianzantxt").attr("value", 0);
+        }
+
+    });
+
+
+    $('#appreciation-btn').click(function () {
+        $('.ui.modal')
+            .modal('show')
+        ;
+    })
+
+
+    $("#menu-btn").click(function () {
+        $(".menu-item").toggleClass("mobile-hide")
+    });
+    // 目录弹窗
+    $('#toc-btn').popup({
+        popup: $('.toc-container.popup'),
+        on: 'click',
+        position: 'left center'
+    });
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+    // 二维码弹窗
+    $('.wechat').popup({
+        popup: $('#qrcode.popup'),
+        position: 'left center'
+    });
+
+
+    $(function () {
+        $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"@{/comments/{id}(id=${blog.id})}");
+    });
+
+    //评论表单验证
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入评论内容'
+                }
+                ]
+            },
+            content: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入你的大名'
+                }]
+            },
+            // type: {
+            //     identifier: 'email',
+            //     rules: [{
+            //         type: 'email',
+            //         prompt: '请填写正确的邮箱地址'
+            //     }]
+            // }
+        }
+    });
+    // 提交评论点击事件
+    $('#commentpost-btn').click(function () {
+
+        var boo = $('.ui.form').form('validate form');
+
+        if (boo) {
+            postData();
+        } else {
+            console.log('校验失败')
+        }
+    });
+
+
+    // 提交评论数据
+    function postData() {
+        $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');// 这行是 Opera 的补丁, 少了它 Opera 是直接用跳的而且画面闪烁 by willin
+
+        $("#comment-container").load(/*[[@{/comments}]]*/"/comments", {
+            "parentComment.id": $("[name='parentComment.id']").val(),
+            "blog.id": $("[name='blog.id']").val(),
+            "nickname": $("[name='nickname']").val(),
+            "email": $("[name='email']").val(),
+            "content": $("[name='content']").val()
+        }, function (response, status, xhr) {
+            swal("操作", "评论成功", "success");
+            $body.animate({scrollTop: $('#comment-container').offset().top}, 500);
+            clearContent();
+
+        });
+    }
+
+    function clearContent() {
+        $("[name='content']").val('');
+        $("[name='parentComment.id']").val(-1);
+        $("[name='content']").attr("placeholder", "请输入评论信息...");
+    }
+
+    function reply(obj) {
+        var commentId = $(obj).data('commentid');
+        var commentNickname = $(obj).data('commentnickname');
+        $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
+        $("[name='parentComment.id']").val(commentId);
+
+    }
+</script>
+</body>
+
+</html>

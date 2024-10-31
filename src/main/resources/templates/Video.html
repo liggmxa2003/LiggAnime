@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="_fragments :: head(~{::title})">
+    <title>番剧</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+    /* 动漫主题的渐变背景 */
+    .header-section {
+        background: linear-gradient(135deg, #6a0dad, #ff6bcb, #6ec1e4);
+        /* 紫色到粉色到蓝色的渐变 */
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+    /* 页面全局设置 */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        color: white;
+        height: 100%;
+
+    }
+    .header-section h1 {
+        font-size: 36px;
+        margin: 0;
+    }
+
+    .header-section p {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .hover-zoom:hover::after {
+        content: '\f04b';
+        /* Font Awesome 播放图标 */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 2em;
+        z-index: 1;
+    }
+</style>
+
+<body>
+<!--头部导航-->
+<nav th:replace="_fragments :: menu(2)">
+
+</nav>
+<!-- 顶部标题部分 -->
+<div class="header-section">
+    <h1>热映推荐</h1>
+    <p>新鲜热播好剧</p>
+</div>
+<br>
+<br>
+<br>
+
+<div class="ui container " >
+    <h1 style="color: black;">热门番剧</h1>
+    <div class="ui grid">
+        <div class="three wide column" th:each="blog : ${pageInfo.list}">
+            <div class="ui card">
+                <div class="five wide column">
+                    <a th:href="@{/blog/{id}(id=${blog.id})}">
+                        <img src="#" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image hover-zoom">
+                    </a>
+                </div>
+                <div class="content" style="opacity: 0.6;">
+                    <a th:href="@{/blog/{id}(id=${blog.id})}" class="header" th:text="${blog.title}">番剧名称</a>
+                    <div class="meta">
+                        <span class="date" th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">发布时间</span> 发布
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h1 style="color: black;">推荐番剧</h1>
+    <!-- 添加更多行以显示更多卡片 -->
+    <div class="ui grid">
+        <div class="three wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img src="https://lain.bgm.tv/pic/cover/l/7b/b8/431370_H6j06.jpg" alt="Anime 5"
+                         class="hover-zoom">
+                </div>
+                <div class="content">
+                    <a class="header">精灵幻想记2</a>
+                    <div class="meta">
+                        <span class="date">03周三00:40</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 其他列继续按照同样的格式 -->
+    </div>
+<br>
+<br>
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+</div>
+</body>
+
+</html>

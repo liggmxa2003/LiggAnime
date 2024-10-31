@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwz.dao.TypeDao">
+
+<!--    根据类型ID查询类型信息-->
+    <select id="getType" resultType="com.lwz.pojo.Type">
+        select id,name from t_type where id = #{id}
+    </select>
+
+<!--    MyBatis插入映射语句，用于将Type对象的数据保存到数据库中-->
+    <insert id="saveType" parameterType="com.lwz.pojo.Type">
+        insert into t_type values (#{id},#{name});
+    </insert>
+
+    <!--两个id可能会相冲，取别名即可-->
+    <resultMap id="type" type="com.lwz.pojo.Type">
+        <id property="id" column="tid"/>
+        <result property="name" column="name"/>
+        <collection property="blogs" ofType="com.lwz.pojo.Anime">
+            <id property="id" column="bid"/>
+            <result property="title" column="title"/>
+            <result property="typeId" column="type_id"/>
+        </collection>
+    </resultMap>
+
+    <!--
+    查询博番剧型信息
+    该查询从`t_type`表和`t_anime`表中选择相关列，基于类型ID进行连接，以获取番剧类型详细信息
+    resultMap="type" 指定了查询结果如何映射到对象的属性上
+-->
+    <select id="getBlogType" resultMap="type">
+        select t.id tid, t.name, b.id bid, b.title, b.type_id
+        from t_type t, t_anime b
+        where t.id = b.type_id
+    </select>
+
+
+    <!--
+    查询所有类型信息的方法
+    id: getAllType - 方法的唯一标识符
+    resultType: com.lwz.pojo.Type - 指定查询结果映射到的Java对象类型
+
+    此查询语句用于从数据库表 t_type 中选择所有记录，并将结果映射为 Type 对象列表
+-->
+    <select id="getAllType" resultType="com.lwz.pojo.Type">
+        select * from t_type
+    </select>
+
+    <!--
+    根据名称查询类型
+    参数：name - 要查询的类型名称
+-->
+    <select id="getTypeByName" resultType="com.lwz.pojo.Type">
+        select * from t_type where name = #{name}
+    </select>
+
+    <!--
+        删除指定类型的记录。
+
+        说明：
+        - 该 SQL 语句用于从 't_type' 表中删除一个指定的类型记录。
+        - 参数 'id' 是一个动态值，表示需要删除的类型的唯一标识符。
+        - 使用 '#{}' 占位符来防止 SQL 注入，并确保类型安全。
+    -->
+    <delete id="deleteType" >
+        delete from t_type where id = #{id}
+    </delete>
+
+    <!--
+        MyBatis 更新映射语句
+        用于更新数据库中 t_type 表的记录
+        该映射语句定义了一个名为 updateType 的更新操作，它接受一个 com.lwz.pojo.Type 类型的参数
+        通过此映射语句，可以更新指定类型对象的名称
+        注意：实际的更新操作是在数据库中执行的，这里只是定义了更新语句的模板
+    -->
+    <update id="updateType" parameterType="com.lwz.pojo.Type">
+        update t_type set name = #{name} where id = #{id};
+    </update>
+
+</mapper>

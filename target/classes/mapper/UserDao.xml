@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwz.dao.UserDao">
+
+<!--        根据用户名和密码查询用户信息-->
+    <select id="queryByUsernameAndPassword" resultType="com.lwz.pojo.User">
+        select * from t_user where username = #{username} and password = #{password};
+    </select>
+
+    <!-- 插入新用户注册信息到数据库 -->
+    <insert id="registerUser" parameterType="com.lwz.pojo.User">
+        insert into t_user (username, password, nickname, email)
+        values (#{username}, #{password}, #{nickname}, #{email});
+    </insert>
+
+</mapper>

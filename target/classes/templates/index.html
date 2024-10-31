@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head th:replace="_fragments :: head(~{::title})">
+    <title>番剧首页</title>
+    <style>
+
+    </style>
+</head>
+
+<body class="index-bg">
+
+<!--头部导航-->
+<nav th:replace="_fragments :: menu(1)">
+
+</nav>
+<div class="header-section">
+    <h1>首页推荐</h1>
+    <p>新鲜热播好剧</p>
+</div>
+
+<!-- 轮播图容器 -->
+<br>
+<div class="ui center aligned container">
+    <!-- 轮播图主体部分，设置了圆角和边框 -->
+    <div class="ui raised segment" style="border-radius: 10px; border: 2px;">
+        <div class="ui grid">
+            <div class="column">
+                <!-- 轮播图链接，点击可跳转 -->
+                <a href="#" id="carousel-link" target="_blank">
+                    <!-- 轮播图图片，设置了固定尺寸和样式，添加了过渡效果 -->
+                    <img id="carousel-image" alt="Carousel Image" class="ui centered image"
+                         style="width: 800px; height: 450px; border: 2px solid #ff69b4; border-radius: 10px; transition: transform 0.5s ease-in-out;">
+                </a>
+                <!-- 图片底部的文字描述，背景半透明黑色，白色文字 -->
+                <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded">
+                    <h2 id="carousel-title" class="text-lg font-semibold"></h2>
+                </div>
+
+                <!-- 图片下方的描述文字 -->
+                <p id="carousel-description"></p>
+                <!-- 上一张按钮，设置在左上角，鼠标悬停时透明度变化 -->
+                <button id="prev-button"
+                        class="ui icon button pink basic circular large absolute left-0 top-1/2 transform -translate-y-1/2"
+                        style="margin-right: 100px;">
+                    <i class="left arrow icon"></i>
+                </button>
+
+                <!-- 下一个按钮 -->
+                <button id="next-button"
+                        class="ui icon button pink basic circular large absolute right-0 top-1/2 transform -translate-y-1/2">
+                    <i class="right arrow icon"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--中间内容-->
+<div class="m-container m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <!--左边番剧列表-->
+            <div class="eleven wide column">
+                <!--header-->
+                <div class="ui top attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <h3 class="ui blue header">番剧</h3>
+                        </div>
+                        <div class="right aligned column">
+                            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${pageInfo.total}">
+                        N </h2> 篇
+                        </div>
+                    </div>
+                </div>
+
+                <!--content-->
+                <div class="ui attached segment">
+
+                    <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${pageInfo.list}">
+                        <div class="ui middle aligned mobile reversed stackable grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" class="m-black"
+                                                         th:text="${blog.title}">番剧名称</a></h3>
+                                <p class="m-text" th:text="|${blog.description}......|">
+                                    番剧介绍........</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+<!--                                            发布者-->
+                                            <div class="item">
+                                                <img src="https://unsplash.it/100/100?image=1005"
+                                                     th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
+                                                <div class="content"><a class="header"
+                                                                        th:text="${blog.user.nickname}">Ligg</a></div>
+                                            </div>
+
+                                            <div class="item">
+                                                <i class="calendar icon"></i><span
+                                                    th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2024-10-10</span>上传
+                                            </div>
+<!--                                            暂时废弃浏览次数-->
+<!--                                            <div class="item">-->
+<!--                                                <i class="eye icon"></i> <span th:text="${blog.views}"></span>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" th:href="@{/types/{id}(id=${blog.type.id})}"
+                                           class="ui blue basic label m-padded-tiny m-text-thin"
+                                           th:text="${blog.type.name}">摸鱼方法</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="five wide column">
+                                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}">
+                                    <img src="#" th:src="@{${blog.firstPicture}}"
+                                         alt="" class="ui rounded image hover-zoom">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--footer-->
+                <div class="ui bottom attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <div class="item"><a class="ui mini blue basic button"
+                                                 th:href="@{/(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                            </div>
+                        </div>
+                        <div class="right aligned column">
+                            <div class="item"><a class="ui mini blue basic button"
+                                                 th:href="@{/(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui segment m-inline-block">
+                    <p>当前第<span th:text="${pageInfo.pageNum}"></span>页，总<span th:text="${pageInfo.pages}"></span>页，共<span
+                            th:text="${pageInfo.total}"></span>条记录</p>
+                </div>
+
+            </div>
+
+            <!--右边的top-->
+            <div class="five wide column">
+
+                <!--分类-->
+                <div class="ui segments ">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>分类
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" th:href="@{types/-1}" target="_blank">分类页 <i
+                                        class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui blue segment ">
+                        <div class="ui fluid vertical menu">
+                            <a href="#" th:href="@{/types/{id}(id=${type.id})}" target="_blank" class="item"
+                               th:each="type : ${types}">
+                                <span th:text="${type.name}">name</span>
+                                <div class="ui blue basic left pointing label" th:text="${#arrays.length(type.blogs)}">
+                                    13
+                                </div>
+                            </a>
+                            <!--/*-->
+                            <a href="#" class="item">
+                                思考与感悟
+                                <div class="ui blue basic left pointing label">13</div>
+                            </a>
+                            <!--*/-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui segments m-margin-top-large">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="tags icon"></i>标签
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" th:href="@{tags/-1}">标签页 <i
+                                        class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui blue segment">
+                        <a href="#" target="_blank" class="ui blue basic left pointing label m-margin-tb-tiny">
+                            <div>
+                                时间问题，等后续优化在实现功能(LIgg)
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                        </a>
+                    </div>
+                </div>
+
+<!--                &lt;!&ndash;最新推荐&ndash;&gt;-->
+<!--                <div class="ui segments m-margin-top-large">-->
+<!--                    <div class="ui secondary segment ">-->
+<!--                        <i class="bookmark icon"></i>最新推荐-->
+<!--                    </div>-->
+<!--                    <div class="ui segment" th:each="recommendBlog : ${recommendBlogs}">-->
+<!--                        <a href="#" th:href="@{/blog/{id}(id=${recommendBlog.id})}" th:text="${recommendBlog.title}"-->
+<!--                           class="m-black m-text-thin">User Story）</a>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;/*&ndash;&gt;-->
+<!--                    <div class="ui blue segment">-->
+<!--                        <a href="#" class="m-black m-text-thin">（User Story）</a>-->
+<!--                    </div>-->
+
+
+<!--                    &lt;!&ndash;*/&ndash;&gt;-->
+<!--                </div>-->
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<br>
+<br>
+
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+
+
+<script>
+    const carouselData = [
+        {
+
+            image: 'https://play.xfvod.pro/images/hb/re02.jpg?text=Anime+1',
+            title: '从零开始的异世界生活',
+            description: '从便利店回来的路上突然被召唤到异世界的少年，菜月昴。在无可依赖的异世界，无力的少年所唯一拥有的力量……那就是死后便会使时间倒转的“死亡回归”的力量。为了守护重要的人，并取回那些无可替代的时间，少年向绝望抗争，挺身面对残酷的命运。',
+            link: 'https://www.5dm.link/api/dd.php?vid=clksdysjshss1&cid=clksdysjshss1&xid=0&pid=54595&tid=1729232693&t=7febed5df8f98f70f7f64f4fb48aa0be&ext=.mp4'
+        },
+        {
+            image: 'https://play.xfvod.pro/images/hb/wtdhz.png?text=Anime+2',
+            title: '【我推的孩子】 第二季',
+            description: '新的舞台开幕了… 当红漫画《东京BLADE》的舞台剧开始排练了。 被剧团LALALAI的众演员包围，让佳奈的演技大爆发。 一边认可佳奈实力，却同时激起猛烈竞争心的茜。 在一群才华洋溢又充满热情的演员中，阿奎亚利用自身演技，来追查小爱当年的丧命真相…。 以及成为偶像后，不断追寻着母亲背影的露比…。',
+            link: 'https://play.xfvod.pro/temp/2407/%E6%88%91%E6%8E%A808.mp4'
+        },
+        {
+            image: 'https://i1.wp.com/www.5dm.link/wp-content/uploads/2024/06/2024063015042090-520x293.jpg?text=Anime+3',
+            title: '拜犬女主太多了',
+            description: '「诶？败犬指的是什么？」作为班级背景板的我——温水和彦，目睹着人气少女八奈见杏菜被男生甩了。「你说要娶了我的这种话，是不是有点过分？」「那是几岁时候的事情？」「四五岁吧。」这种事是不可能的吧。以此为契',
+            link: 'https://play.xfvod.pro/temp/2407/%E8%B4%A5%E5%8C%9708z.mp4'
+        }
+        ,
+        {
+            image: 'https://i1.wp.com/www.5dm.link/wp-content/uploads/2020/03/2020032818450025-520x293.png?text=Anime+4',
+            title: '我的青春恋爱物语果然有问题 第三季',
+            description: '因过去的心理阴影而以独特的别扭思考回路讴歌着“独自生活”的比企谷八幡，偶然地在负责生活指导的教师·平冢静的强迫下加入了“侍奉部”。八幡和同社团所属的令人窒息的完美美少女·雪之下雪乃，以及班级上位阶级所属的时髦女子·由比滨结衣一同，从解决班上的人际关系问题到帮助学生会等，度过着解决各种事件的每一天。',
+            link: 'https://play.xfvod.pro/W/W-%E6%88%91%E7%9A%84%E9%9D%92%E6%98%A5%E6%81%8B%E7%88%B1%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98%E7%B3%BB%E5%88%97/S3/12.mp4'
+        }
+    ];
+    let currentIndex = 0;
+    let startX = 0;
+    let endX = 0;
+
+    function updateCarousel() {
+        const carouselLink = document.getElementById('carousel-link');
+        const carouselImage = document.getElementById('carousel-image');
+        const carouselTitle = document.getElementById('carousel-title');
+        const carouselDescription = document.getElementById('carousel-description');
+
+        carouselLink.href = carouselData[currentIndex].link;
+        carouselImage.src = carouselData[currentIndex].image;
+        carouselTitle.textContent = carouselData[currentIndex].title;
+        carouselDescription.textContent = carouselData[currentIndex].description;
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % carouselData.length;
+        updateCarousel();
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
+        updateCarousel();
+    }
+
+    document.getElementById('carousel-image').addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+    });
+
+    document.getElementById('carousel-image').addEventListener('mouseup', (e) => {
+        endX = e.clientX;
+        if (startX > endX + 50) {
+            showNext();
+        } else if (startX < endX - 50) {
+            showPrev();
+        }
+    });
+
+    document.getElementById('prev-button').addEventListener('click', showPrev);
+    document.getElementById('next-button').addEventListener('click', showNext);
+
+    setInterval(showNext, 5000); // Change every 5 seconds
+
+    updateCarousel(); // 初始化轮播图
+</script>
+
+</body>
+</html>

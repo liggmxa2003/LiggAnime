@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目介绍</title>
+    <link rel="icon" href="https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+<!--    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">-->
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+<!--    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">-->
+<!--    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">-->
+<!--    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">-->
+<!--    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>-->
+    <style>
+        /* 全局样式 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* 页面的渐变背景 */
+        .background {
+            height: 100%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* 项目介绍容器 */
+        .container1 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 介绍段落样式 */
+        p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 功能亮点部分 */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+        }
+
+        .feature-box {
+            background-color: #f1f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #777;
+        }
+
+        /* 团队介绍部分 */
+        .team {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            color: #777;
+        }
+
+        /* 按钮样式 */
+        .cta-button {
+            background-color: #66a6ff;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #5c9ae1;
+        }
+    </style>
+</head>
+<body>
+<!--头部导航-->
+<nav th:replace="_fragments :: menu(6)">
+
+</nav>
+<!-- 项目介绍页面的主要容器 -->
+<!-- 背景容器 -->
+<div class="background">
+    <div class="container1">
+        <!-- 项目标题 -->
+        <h1>项目简介</h1>
+
+        <!-- 项目简介 -->
+        <p>欢迎来到的项目介绍页面！此项目在2024年10月1日进行首次开发,保持两天一更更新的进度开发。在10月5日第一次提交到<a href="https://github.com/liggmxa2003/blibli" target="_blank"><i class="github icon"></i>Github</a>和<a href="https://gitee.com/liggmxa2003/blibli" target="_blank"><i class="gitlab icon"></i>Gitee</a>仓库。是我独立开的发的第二个项目</p>
+
+        <!-- 功能亮点 -->
+        <div class="features">
+            <div class="feature-box">
+                <h3>开发背景</h3>
+                <p>该动漫发布网站为用户提供最新、最热门的动漫资源。虽然动漫视频都是抓包其他网站的资源的😆</p>
+            </div>
+            <div class="feature-box">
+                <h3>前端</h3>
+                <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+            <div class="feature-box">
+                <h3>后端</h3>
+                <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+
+        <!-- 团队介绍 -->
+        <div class="team">
+            <div class="team-member">
+                <img src="" th:src="@{/images/Ligg.jpg}" alt="Team Member">
+                <h4>LIgg</h4>
+                <a href="https://qm.qq.com/q/s3dDDrFKbm">
+                <p>作者LIGG</p>
+                </a>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Team Member">
+                <h4>XXX</h4>
+                <p>Ligg</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Team Member">
+                <h4>XXX</h4>
+                <p>Ligg</p>
+            </div>
+            <div class="rounded" >
+                <img src="" th:src="@{/images/qq.jpg}" alt="Team Member" style="height: 220px; width: 150px;">
+                <h4>作者QQ二维码</h4>
+            </div>
+
+        </div>
+
+        <br>
+        <!-- CTA 按钮 -->
+        <a href="https://github.com/liggmxa2003/blibli" target="_blank"><button class="cta-button">了解更多</button></a>
+
+    </div>
+</div>
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+</footer>
+
+<!--导入的script-->
+<th:block th:replace="_fragments :: script">
+
+</th:block>
+
+<!-- 引入 Semantic UI JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="icon" href="https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg" type="image/png">
+</head>
+
+<body>
+<div class="box">
+    <div class="content">
+       <form class="ui large form" method="post" action="#" th:action="@{/admin/login}" onsubmit="return validateForm()">
+    <div class="login-wrapper">
+        <h1>登录</h1>
+        <div class="login-form">
+            <div class="username form-item">
+                <span>使用账号登录</span>
+                <input type="text" name="username" class="input-item" id="username">
+            </div>
+            <div class="password form-item">
+                <span>密码</span>
+                <input type="password" name="password" class="input-item" id="password">
+            </div>
+            <button class="login-btn">登 录</button>
+        </div>
+        <div class="ui error message" id="error-message"></div>
+        <div class="ui mini negative message" th:unless="${#strings.isEmpty(msg)}" th:text="${msg}">
+            用户名或密码错误
+        </div>
+
+</form>
+
+<!--        <a th:href="@{/}" class="ui secondary button">返回首页</a>-->
+        <div class="divider">
+            <span class="line"></span>
+            <span class="divider-text">其他方式登录</span>
+            <span class="line"></span>
+        </div>
+        <div class="other-login-wrapper">
+            <div class="other-login-item">
+                <img src="/images/QQ.png" th:src="@{/images/QQ.png}" alt="">
+            </div>
+            <div class="other-login-item">
+                <img src="/images/WeChat.png" th:src="@{/images/WeChat.png}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var errorMessage = document.getElementById("error-message");
+
+        if (username === "" || password === "") {
+            errorMessage.innerHTML = "用户名和密码不能为空";
+            return false; // 阻止表单提交
+        } else {
+            errorMessage.innerHTML = ""; // 清除错误信息
+            return true; // 允许表单提交
+        }
+    }
+</script>
+
+</html>
