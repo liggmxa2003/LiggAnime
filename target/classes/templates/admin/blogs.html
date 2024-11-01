@@ -27,46 +27,6 @@
     <div class="ui container">
 
         <div class="ui secondary segment form">
-            <!--查询表单需要是form提交数据-->
-            <!--    暂时废弃        -->
-<!--            <form th:action="@{/admin/blogs/search}" method="post" class="ui segment form">-->
-
-<!--                &lt;!&ndash;fields代表一个区域,inline缩短区域的效果&ndash;&gt;-->
-<!--                <div class="inline fields">-->
-<!--                    <div class="field">-->
-<!--                        <input type="text" name="title" placeholder="标题">-->
-<!--                    </div>-->
-<!--                    <div class="field">-->
-<!--                        &lt;!&ndash;dropdown是下拉框效果&ndash;&gt;-->
-<!--                        <div class="ui labeled action input">-->
-<!--                            <div class="ui type selection dropdown">-->
-<!--                                <input type="hidden" name="typeId">-->
-<!--                                <i class="dropdown icon"></i>-->
-<!--                                <div class="default text">分类</div>-->
-<!--                                &lt;!&ndash;menu是菜单&ndash;&gt;-->
-<!--                                <div class="menu">-->
-<!--                                    <div th:each="type : ${types}" th:data-value="${type.id}" th:text="${type.name}"-->
-<!--                                         class="item" data-value="1">错误日志-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <button id="clear-btn" class="ui compact button">clear</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="field">-->
-<!--                        <div class="ui checkbox">-->
-<!--                            <input type="checkbox" id="recommend" name="recommend">-->
-<!--                            <label for="recommend">推荐</label>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="field">-->
-<!--                        <button type="button" id="search-btn" class="ui mini teal basic button"><i-->
-<!--                                class="search icon"></i>搜索-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </form>-->
-
             <div id="table-container">
                 <table th:fragment="blogList" class="ui compact teal table">
                     <thead>
