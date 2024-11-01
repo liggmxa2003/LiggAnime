@@ -1,6 +1,14 @@
 # blibli
 ###### 基于springboot+mybatis开发的动漫发布网站基于springboot+mybatis开发的动漫发布网站
 
+## 下载
+
+通过本页面 [release](https://github.com/liggmxa2003/blibli/releases) 选项卡下载。
+
+<a href="https://github.com/liggmxa2003/blibli/releases">
+  <img src="https://github.com/Predidit/Kazumi/raw/main/static/svg/get_it_on_github.svg" alt="Get it on Github" width="200"/>
+</a>
+
 **开发环境**
 1. 编程软件：[IntelliJ IDEA 2023.3.6](https://www.jetbrains.com/help/idea/2023.3/managing-plugins.html?preferences.pluginManager&utm_source=product&utm_medium=link&utm_campaign=IU&utm_content=2023.3 "IntelliJ IDEA 2023.3.6")
 2. JDK：[jdk17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html "jdk17")
