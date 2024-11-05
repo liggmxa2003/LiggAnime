@@ -49,9 +49,13 @@
                         <span>密码</span>
                         <input type="password" name="password" class="input-item" id="password">
                     </div>
+                    <div class="ui error message" id="error-message"></div>
                     <button class="login-btn">登 录</button>
+                    <div>
+                        <a href="/admin/register" class="register-link">没有账号？立即注册</a>
+                    </div>
                 </div>
-                <div class="ui error message" id="error-message"></div>
+
                 <div class="ui mini negative message"
                      th:unless="${#strings.isEmpty(msg)}"
                      th:text="${msg}">

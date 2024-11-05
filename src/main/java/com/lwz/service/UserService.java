@@ -16,5 +16,6 @@ public interface UserService {
     public User queryUserById(Long id);
 
     //修改用户信息
+
     public boolean updateUser(User user);
 }
