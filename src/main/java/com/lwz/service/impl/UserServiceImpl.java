@@ -3,8 +3,11 @@ package com.lwz.service.impl;
 import com.lwz.dao.UserDao;
 import com.lwz.pojo.User;
 import com.lwz.service.UserService;
+import com.lwz.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static org.apache.tomcat.jni.User.username;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,19 +26,19 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User checkUser(String username, String password) {
-        User user = userDao.queryByUsernameAndPassword(username,(password));
+        User user = userDao.queryByUsernameAndPassword(username, MD5Utils.encryptToMD5(password));
         return user;
     }
 
     //    注册用户功能实现
     @Override
-    public boolean registerUser(User user) {
+    public boolean registerUser(String username, String password) {
         // 判断用户是否已存在
-        if (userDao.queryUser(user.getUsername()) != null) {
+        if (userDao.queryUser(username) != null) {
             return false;
         }
         // 用户不存在，调用DAO层的用户注册方法
-        userDao.registerUser(user);
+        userDao.registerUser(username,password);
         return true;
     }
 

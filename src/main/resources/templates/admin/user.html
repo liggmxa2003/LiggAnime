@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用户页面</title>
+    <link rel="icon" href="https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg" type="image/png">
     <link rel="stylesheet" href="../static/css/user.css" th:href="@{/css/user.css}">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
@@ -53,7 +54,7 @@
     <div class="twelve wide column">
         <div class="content-area">
             <h2 class="ui dividing header">账户信息</h2>
-            <form action="#" th:object="${user}" th:action="@{/admin/user/update}" method="post" class="ui form">
+            <form action="#" th:object="${user}" th:action="@{/admin/user/update/{id}(id = ${user.id})}" method="post" class="ui form">
                 <div class="ui form user-info">
                     <div class="field">
                         <label>账号</label>
@@ -69,11 +70,11 @@
                     </div>
                     <div class="field">
                         <label>用户名</label>
-                        <input name="nickname" type="text" placeholder="用户名" value="" th:field="*{nickname}">
+                        <input name="nickname" type="text" placeholder="用户名" value="" th:value="*{nickname}">
                     </div>
                     <div class="field">
                         <label>用户头像</label>
-                        <input name="avatar" type="text" placeholder="头像链接" value="">
+                        <input name="avatar" type="text" placeholder="头像链接" value="" th:field="*{avatar}">
                     </div>
                     <div class="field">
                         <label>用户组</label>
@@ -85,7 +86,7 @@
                     </div>
                     <div class="field">
                         <label>注册时间</label>
-                        <input type="text" placeholder="注册时间" value="" readonly>
+                        <input type="text" placeholder="注册时间" value="" th:value="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}" readonly>
                     </div>
                     <div class="field">
                         <label>登陆IP</label>

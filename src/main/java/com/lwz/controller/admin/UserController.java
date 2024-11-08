@@ -25,10 +25,10 @@ public class UserController {
     }
 
     //修改用户信息
-    @PostMapping("/user/update")
+    @PostMapping("/user/update/{id}")
     public String editUser(User user){
         userService.updateUser(user);
-        return "redirect:/admin/users{id}";
+        return "redirect:/admin";
     }
 
 }

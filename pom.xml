@@ -19,6 +19,12 @@
 	</properties>
 
 	<dependencies>
+<!--		添加jwt-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
 		<!--这三个jar包作用是将markdown格式转成html格式-->
 		<dependency>
 			<groupId>com.atlassian.commonmark</groupId>

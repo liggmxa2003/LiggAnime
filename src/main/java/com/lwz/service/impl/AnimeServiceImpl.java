@@ -6,7 +6,7 @@ import com.lwz.pojo.Anime;
 import com.lwz.pojo.AnimeAndTag;
 import com.lwz.pojo.Tag;
 import com.lwz.service.AnimeService;
-import com.lwz.util.MarkdownUtils;
+import com.lwz.utils.MarkdownUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

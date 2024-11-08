@@ -18,7 +18,7 @@ public interface UserDao {
     User queryUser(String username);
 
     // 注册新用户
-    int registerUser(User user);
+    int registerUser(String username, String password);
 
     //修改用户信息
     boolean updateUser(User user);

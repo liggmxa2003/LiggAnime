@@ -26,7 +26,7 @@
             <if test="username!=null">
                 username = #{username},
             </if>
-            <if test="password!=null">
+            <if test="password != null and password != ''">
                 password = #{password},
             </if>
             <if test="nickname!=null">
@@ -39,6 +39,7 @@
                 avatar = #{avatar},
             </if>
         </set>
+        where id = #{id}
     </update>
     <!--        根据用户名和密码查询用户信息-->
     <select id="queryByUsernameAndPassword" resultType="com.lwz.pojo.User">
@@ -46,18 +47,18 @@
     </select>
 
 <!--    根据账号查询用户-->
-    <select id="queryUser" parameterType="String" resultType="com.lwz.pojo.User">
+    <select id="queryUser" parameterType="String" resultMap="user">
         select * from t_user where username = #{username}
     </select>
 <!--    根据id查询用户信息-->
-    <select id="queryUserById" resultType="com.lwz.pojo.User">
+    <select id="queryUserById" resultMap="user">
         select * from t_user where id = #{id}
     </select>
 
     <!-- 插入新用户注册信息到数据库 -->
     <insert id="registerUser" parameterType="com.lwz.pojo.User">
-        insert into t_user (username, password, nickname, email)
-        values (#{username}, #{password}, #{nickname}, #{email});
+        insert into t_user (username, password,create_time)
+        values (#{username}, #{password},NOW());
     </insert>
 
 </mapper>

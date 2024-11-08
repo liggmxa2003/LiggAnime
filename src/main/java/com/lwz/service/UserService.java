@@ -10,7 +10,8 @@ public interface UserService {
     public User checkUser(String username, String password);
 
     //注册
-    public boolean registerUser(User user);
+    public boolean registerUser(String username, String password);
+
 
     //id查询用户
     public User queryUserById(Long id);
