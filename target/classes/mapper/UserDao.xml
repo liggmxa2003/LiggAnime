@@ -23,6 +23,9 @@
     <update id="updateUser" parameterType="com.lwz.pojo.User">
         update t_user
         <set>
+            <if test="username!=null">
+                username = #{username},
+            </if>
             <if test="password!=null">
                 password = #{password},
             </if>
@@ -36,7 +39,6 @@
                 avatar = #{avatar},
             </if>
         </set>
-        where id = #{id}
     </update>
     <!--        根据用户名和密码查询用户信息-->
     <select id="queryByUsernameAndPassword" resultType="com.lwz.pojo.User">

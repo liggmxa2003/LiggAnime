@@ -53,34 +53,27 @@
     <div class="twelve wide column">
         <div class="content-area">
             <h2 class="ui dividing header">账户信息</h2>
-            <form action="#" th:object="${user}" th:action="@{/admin/user/update/{id}(id=*{id})}" method="post" class="ui form"  onsubmit="return validateForm()">
+            <form action="#" th:object="${user}" th:action="@{/admin/user/update}" method="post" class="ui form">
                 <div class="ui form user-info">
                     <div class="field">
-                        <label>编号</label>
-                        <input name="id" type="text" placeholder="id" value="" th:field="*{id}" readonly>
-                    </div>
-                    <div class="field">
                         <label>账号</label>
-                        <input type="text" placeholder="账号" value="" th:field="*{username}" readonly>
+                        <input type="text" placeholder="账号" value="19971481405" th:field="*{username}" readonly>
                     </div>
                     <div class="field">
                         <label>密码</label>
-                        <input id="password" name="password" type="password" placeholder="修改密码" value="" th:value="*{password}">
-                        <div class="ui mini negative message" th:if="${#fields.hasAnyErrors()}">
-                            <span th:each="err : ${#fields.errors('password')}" th:text="${err}"></span>
-                        </div>
+                        <input name="password" type="password" placeholder="修改密码" value="">
                     </div>
                     <div class="field">
                         <label>邮箱</label>
                         <input name="email" type="text" placeholder="请输入邮箱" value="" th:field="*{email}">
                     </div>
                     <div class="field">
-                        <label>头像</label>
-                        <input name="avatar" type="text" placeholder="头像链接" value="" th:field="*{avatar}">
-                    </div>
-                    <div class="field">
                         <label>用户名</label>
                         <input name="nickname" type="text" placeholder="用户名" value="" th:field="*{nickname}">
+                    </div>
+                    <div class="field">
+                        <label>用户头像</label>
+                        <input name="avatar" type="text" placeholder="头像链接" value="">
                     </div>
                     <div class="field">
                         <label>用户组</label>
@@ -122,20 +115,5 @@
 <th:block th:replace="admin/_fragments :: script">
 
 </th:block>
-<script>
-    function validateForm() {
-        const passwordInput = document.getElementById('password');
-        const errorMessage = document.getElementById('error-message');
-
-        if (passwordInput.value.trim() === '') {
-            errorMessage.style.display = 'block';
-            return false;
-        } else {
-            errorMessage.style.display = 'none';
-            // 表单验证通过，可以提交表单
-            return true;
-        }
-    }
-</script>
 </body>
 </html>

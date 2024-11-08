@@ -2,6 +2,7 @@
 ###### 基于springboot+mybatis开发的动漫发布网站基于springboot+mybatis开发的动漫发布网站
 
 ## 下载
+
 通过本页面 [release](https://github.com/liggmxa2003/blibli/releases) 选项卡下载。
 
 <a href="https://github.com/liggmxa2003/blibli/releases">

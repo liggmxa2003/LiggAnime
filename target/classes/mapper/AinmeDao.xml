@@ -143,7 +143,6 @@
         </where>
     </select>
 
-<!--    编辑-->
     <update id="updateBlog" parameterType="com.lwz.pojo.Anime">
         update  t_anime set published = #{published},flag = #{flag} ,
         title = #{title}, content = #{content}, type_id = #{typeId}, tag_ids = #{tagIds},
