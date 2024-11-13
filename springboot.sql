@@ -11,7 +11,7 @@
  Target Server Version : 80039
  File Encoding         : 65001
 
- Date: 27/10/2024 22:00:21
+ Date: 11/11/2024 15:55:59
 */
 
 SET NAMES utf8mb4;
@@ -40,14 +40,13 @@ CREATE TABLE `t_anime`  (
   `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL,
   `tag_ids` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of t_anime
 -- ----------------------------
 INSERT INTO `t_anime` VALUES (14, '败犬女主太多了！', '**没能赢得心上人恋情的女孩——“败犬女主”。\r\n爱吃的青梅竹马系女主·八奈见杏菜。\r\n活力充沛的运动系女主·烧盐柠檬。\r\n怕生的小动物系女主·小鞠知花。\r\n被有点缺憾的败犬女主——败女们环绕，新感觉、乱糟糟的败走系青春故事就此揭幕。**', 'https://lain.bgm.tv/r/400/pic/cover/l/e4/dc/464376_NsZRw.jpg', '', 0, 1, 0, 1, 1, 0, '2024-10-19 21:28:10', '2024-10-20 01:21:50', 4, 2, '没能赢得心上人恋情的女孩——“败犬女主”。\r\n爱吃的青梅竹马系女主·八奈见杏菜。\r\n活力充沛的运动系女主·烧盐柠檬。\r\n怕生的小动物系女主·小鞠知花。\r\n被有点缺憾的败犬女主——败女们环绕，新感觉、乱糟糟的败走系青春故事就此揭幕。', '3,4,5,8,9');
 INSERT INTO `t_anime` VALUES (15, '【我推的孩子】 第二季', '**当红漫画《东京BLADE》的舞台剧开始排练了。\r\n被剧团LALALAI的众演员包围，让加奈的演技大爆发。\r\n一边认加奈实力，却同时激起猛烈竞争心的黑川茜。\r\n在一群才华洋溢又充满热情的演员中，阿库亚利用自身演技，来追查爱当年的丧命真相...。**', 'https://lain.bgm.tv/r/400/pic/cover/l/d1/1c/443428_FIhFu.jpg', '', 0, 1, 1, 1, 1, 0, '2024-10-19 21:29:08', '2024-10-19 21:29:08', 1, 2, '橘さおり、平牧大輔、入江泰浩、仁科くにやす、小松和映、西邑大輔、内野宮晃希', NULL);
-INSERT INTO `t_anime` VALUES (17, '青春笨蛋少年不做兔女郎学姐的梦', '**例如，在梓川咲太面前出现的野生兔女郎。\r\n她的真实身份是高中高年级学生，明星活动休止的女演员樱岛麻衣。她迷人的身姿，不知为何在周围的人眼里看不出来。\r\n咲太决定解开这一谜题。在于麻衣一起度过的时间里，咲太知道了她秘密的想法…**\r\n\r\n(视频来自网络抓包)', 'https://lain.bgm.tv/r/400/pic/cover/l/b9/45/240038_b5j7g.jpg', 'https://play.xfvod.pro/Q/Q-%E9%9D%92%E6%98%A5%E7%8C%AA%E5%A4%B4%E5%B0%91%E5%B9%B4%E4%B8%8D%E4%BC%9A%E6%A2%A6%E5%88%B0%E5%85%94%E5%A5%B3%E9%83%8E%E5%AD%A6%E5%A7%90/01.mp4', 0, 0, 0, 1, 1, 0, '2024-10-20 02:16:10', '2024-10-25 04:30:22', 7, 2, '女主人公们一个接一个地出现在咲太的周围，她们都有着“青春期症候群”。在天空和大海都很闪耀的小镇上，开始了令人激动的故事。', '10,16,15,14,17,12');
 INSERT INTO `t_anime` VALUES (18, '你的名字。', '在每千年回归一次的彗星造访过一个月之后的日本。\r\n　　某个深山的乡下小镇，女高中生三叶每天都过着忧郁的生活。\r\n　　而她烦恼的不光有担任镇长的父亲所举行的选举运动，还有家传神社的古老习俗。\r\n  \r\n  (视频来自网络抓包)', 'https://lain.bgm.tv/r/400/pic/cover/l/20/15/160209_2UzU8.jpg', 'https://play.xfvod.pro/N/N-%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97/%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97.mp4', 0, 0, 0, 1, 1, 0, '2024-10-20 02:23:14', '2024-10-23 23:06:40', 7, 2, '　在每千年回归一次的彗星造访过一个月之后的日本。\r\n　　某个深山的乡下小镇，女高中生三叶每天都过着忧郁的生活。\r\n　　而她烦恼的不光有担任镇长的父亲所举行的选举运动，还有家传神社的古老习俗。', '10,11,14,15');
 INSERT INTO `t_anime` VALUES (19, '玉子市场', '**　座落某个小镇的兔子商店街上，有一间日式饼店，住着一位十分喜欢饼类小吃的高中一年级女生——玉子。除了偶尔在店铺协助父亲，以及钻研新口味的饼类小吃外，她亦有跟学校的朋友参与羽毛球部活动。而饼店对面是同行的竞争对手，两边的父亲经常都因生意问题而喧哗。不过对方儿子——饼藏却自小跟玉子建立青梅竹马的关系，近日更不断隐约地表达心思，只是玉子没有特别注意，更常常被旁观的朋友拿出来扰攘一番。总而言之，玉子就是在商店街众人的护荫下，如此热闹地渡过每一天，生活可谓过得相当快乐**\r\n \r\n (视频来自网络抓包)', 'https://lain.bgm.tv/r/400/pic/cover/l/f8/7f/55113_TR5Is.jpg', 'https://play.xfvod.pro/Y/Y-%E7%8E%89%E5%AD%90%E5%B8%82%E5%9C%BA/%E7%8E%89%E5%AD%9001.mp4', 0, 0, 0, 1, 1, 0, '2024-10-20 03:32:30', '2024-10-23 23:11:39', 10, 2, '除夕，也就是玉子的生日，处于商店街年末最繁忙的时刻。庆祝仪式已经成为了商店街上下的惯例，唯独今年的饼藏没有准时来到。直到他带着礼物来到之时……一只光辉灿烂的鸟出现在众人面前。偶然变得越来越热闹的兔子商店街，亦正式开始其稍微不同的新一年。', '9,15,10,11');
 INSERT INTO `t_anime` VALUES (21, ' 冰菓', '以节能为座右铭的高中生折木奉太郎， 为一个小小的原因而加入了濒临废社的“古典文学部”。古典文学部的社员，包括他在社里认识的好奇宝宝，也就是女主角千反田爱瑠，还有他从国中就认识的伊原摩耶花和福部里志。这是他们四人以神山高中为舞台，对一桩桩事件展开推理的青春学园推理剧。“我很好奇！”奉太郎平静的灰色高中生活，因为千反田的这一句话而为之一变！\r\n\r\n(视频来自网络抓包)', 'https://lain.bgm.tv/r/400/pic/cover/l/cd/38/27364_1ZFmr.jpg', 'https://play.xfvod.pro/B/B-%E5%86%B0%E8%8F%93/01.mp4', 0, 0, 0, 1, 1, 0, '2024-10-20 03:35:11', '2024-10-23 23:05:29', 5, 2, '主角千反田爱瑠，还有他从国中就认识的伊原摩耶花和福部里志。这是他们四人以神山高中为舞台，对一桩桩事件展开推理的青春学园推理剧。“我很好奇！”奉太郎平静的灰色高中生活，因为千反田的这一句话而为之一变！', '10,16,12,11');
@@ -67,6 +66,7 @@ INSERT INTO `t_anime` VALUES (35, '通往夏天的隧道，再见的出口', '�
 INSERT INTO `t_anime` VALUES (36, '声之形', '无比厌恶“无聊”的少年，石田将也。\r\n　　小学时期是个孩子王的他，对转校而来的少女西宫硝子产生了兴趣。\r\n　　在她到来后，少年无聊的日子得到了解放。', 'https://lain.bgm.tv/r/400/pic/cover/l/7c/b9/117777_R8hhl.jpg', 'https://play.xfvod.pro/S/S-%E5%A3%B0%E4%B9%8B%E5%BD%A2/[DMG]%20%E5%8A%87%E5%A0%B4%E7%89%88%20%E8%81%B2%E3%81%AE%E5%BD%A2%20[BDRip][AVC_AAC][1080P][CHS](AB0AECEC).mp4', 0, 0, 0, 1, 1, 0, '2024-10-23 23:24:14', '2024-10-23 23:24:14', 7, 2, '然而，以硝子身上的某件事为契机，将也被周围孤立了起来。\r\n　　而后经过了五年的时间，两人在不同的高中各自成长。\r\n　　机缘巧合之下，紧紧封闭自己内心的将也再次见到了硝子。\r\n　　这是一个少年，试图接受少女、周围的人们，并接受自己的故事', '10,9,16,17');
 INSERT INTO `t_anime` VALUES (37, ' DARLING in the FRANXX', '遥远的未来，因人类过度抽取地球资源，地球变得荒芜，不再适合居住，人类只好居住在移动要塞都市内，但时常需要外出获取无法产出的资源「熔岩燃料」，「熔岩燃料」的开采会吸引来半机械生命体「叫龙」，此时就轮到人类操对抗叫龙的「FranXX」机械人的出场了。究竟这些「叫龙」是敌是友，无从得知。\r\n\r\n(视频来源网络抓包)', 'https://lain.bgm.tv/r/400/pic/cover/l/77/dd/218711_5Z5t1.jpg', 'https://play.xfvod.pro/G/G-%E5%9B%BD%E5%AE%B6%E9%98%9F/01.mp4', 0, 0, 0, 1, 1, 0, '2024-10-23 23:36:59', '2024-10-24 00:05:29', 7, 2, '少年阿广，驾驶部队代号016。他在少年时期被称作神童，如今却因无法驾驶「FranXX」，驾驶员生涯跌落谷底，是不被人需要的存在。在这样的广面前，某天，一位被称作02的神秘少女出现了。她的额头，长着两根艳丽的角。少女对广说：「终于找到你了，我的DARLING」。以此次偶遇为契机，广对驾驶机械人重新燃起了信心。', '10,14,15');
 INSERT INTO `t_anime` VALUES (38, ' 无彩限的怪灵世界', '所谓语言就是寄宿于人脑内的寄生体。\r\n擅长无用知识以及绘画的召唤师——一条晴彦；\r\n持有“五行之气”的常在战场的武斗家——', 'https://lain.bgm.tv/r/400/pic/cover/l/20/7e/94040_kOkAg.jpg', 'https://play.xfvod.pro/D/D-%E5%A4%9A%E5%BD%A9%E9%99%90%E7%9A%84%E6%80%AA%E7%81%B5%E4%B8%96%E7%95%8C/04.mp4', 0, 0, 0, 1, 1, 0, '2024-10-23 23:40:19', '2024-10-23 23:40:19', 12, 2, '传说中的“怪灵吞噬者”——和泉玲奈；\r\n操纵八音的陶瓷娃娃少女——水无濑小糸。\r\n这个世界是真实的？还是虚幻的？', '9,10,15,16,17');
+INSERT INTO `t_anime` VALUES (39, '我想吃掉你的胰脏', '她如此说了。 “我想吃掉你的胰脏” 春。 晚开的樱花仍在绽放的4月。 对他人毫无兴趣，总是独自一人读书的高中生“我”，在医院的等候室捡到了一册文库本。 这本用手写的文字写着《共病文库》这一标题的书，', 'https://lain.bgm.tv/pic/cover/l/23/17/221736_hm0HO.jpg', 'https://play.xfvod.pro/W/W-%E6%88%91%E6%83%B3%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E8%83%B0%E8%84%8F/%E6%88%91%E6%83%B3%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E8%83%B0%E8%84%8F.mp4', 0, 0, 0, 1, 1, 0, '2024-10-29 16:08:58', '2024-10-29 16:08:58', 7, 2, '对于她而言，那是对除了家人和医生以外的人隐藏病情的她，获得了唯一一位共享秘密之人的瞬间。 樱良想要在临终之日到来之前，一边尽量过着一如既往的日常生活，一边去做想要做的事情，竭尽全力享受人生。 在被她那奔放的行动牵着鼻子走的同时，“我”的内心也逐渐产生了变化。 ——那是，“我”的春日回忆。 她的一生回忆。', '9,10,12,15,11');
 
 -- ----------------------------
 -- Table structure for t_anime_tags
@@ -77,7 +77,7 @@ CREATE TABLE `t_anime_tags`  (
   `tag_id` bigint NULL DEFAULT NULL,
   `anime_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 545 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 550 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of t_anime_tags
@@ -563,6 +563,11 @@ INSERT INTO `t_anime_tags` VALUES (541, 15, '17');
 INSERT INTO `t_anime_tags` VALUES (542, 14, '17');
 INSERT INTO `t_anime_tags` VALUES (543, 17, '17');
 INSERT INTO `t_anime_tags` VALUES (544, 12, '17');
+INSERT INTO `t_anime_tags` VALUES (545, 9, '39');
+INSERT INTO `t_anime_tags` VALUES (546, 10, '39');
+INSERT INTO `t_anime_tags` VALUES (547, 12, '39');
+INSERT INTO `t_anime_tags` VALUES (548, 15, '39');
+INSERT INTO `t_anime_tags` VALUES (549, 11, '39');
 
 -- ----------------------------
 -- Table structure for t_comment
@@ -579,7 +584,7 @@ CREATE TABLE `t_comment`  (
   `parent_comment_id` bigint NULL DEFAULT NULL,
   `admincomment` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 74 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of t_comment
@@ -649,6 +654,25 @@ INSERT INTO `t_comment` VALUES (70, 'lwz', NULL, '我推的阿库娅', '/images/
 INSERT INTO `t_comment` VALUES (71, 'lwz', NULL, '评论', '/images/avatar.jpg', '2024-10-24 00:57:58', 38, -1, 0);
 INSERT INTO `t_comment` VALUES (72, '李文舟', NULL, '评论', '/images/avatar.jpg', '2024-10-24 01:01:08', 37, -1, 0);
 INSERT INTO `t_comment` VALUES (73, '李文舟', NULL, '评论', '/images/avatar.jpg', '2024-10-24 12:19:19', 17, -1, 0);
+INSERT INTO `t_comment` VALUES (74, 'lwz', NULL, '评论', '/images/avatar.jpg', '2024-11-05 10:05:43', 32, -1, 0);
+INSERT INTO `t_comment` VALUES (75, 'adad', NULL, 'awdada', '/images/avatar.jpg', '2024-11-09 15:06:27', 36, -1, 0);
+INSERT INTO `t_comment` VALUES (76, 'adadawdaa', NULL, 'awdada', '/images/avatar.jpg', '2024-11-09 15:06:33', 36, -1, 0);
+
+-- ----------------------------
+-- Table structure for t_role
+-- ----------------------------
+DROP TABLE IF EXISTS `t_role`;
+CREATE TABLE `t_role`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_role
+-- ----------------------------
+INSERT INTO `t_role` VALUES (1, 'ADMIN');
+INSERT INTO `t_role` VALUES (2, 'USER');
 
 -- ----------------------------
 -- Table structure for t_tag
@@ -704,19 +728,23 @@ CREATE TABLE `t_user`  (
   `type` int NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
+  `user_role` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `role_id` bigint NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `role_id`(`role_id` ASC) USING BTREE,
+  INDEX `t_user_id_index`(`id` ASC) USING BTREE,
+  CONSTRAINT `fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `t_role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (2, 'LIgg', 'ligg200309', '123456', '29544@qq.com', 'https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg', 1, '2024-10-04 17:43:52', NULL);
-INSERT INTO `t_user` VALUES (3, 'admin', '123456789', '123456789', 'admin@163.com', NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (4, 'Ligg', 'lwz123', '123', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (5, 'lwz', 'lwz200309', '123456', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (6, '一橙', 'lwz200309', '200309', NULL, 'https://lain.bgm.tv/pic/crt/g/e1/3b/17587_crt_pu7Mc.jpg', NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (7, '一橙', '4567', '123', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (8, 'LiggPlus', 'lwz', '123', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `t_user` VALUES (9, NULL, '1234567', 'ligg', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `t_user` VALUES (2, 'LIggPlus', 'ligg200309', '202cb962ac59075b964b07152d234b70', '2954494754@qq.com', 'https://lain.bgm.tv/pic/crt/g/c5/3a/102125_crt_I1eZN.jpg?r=1674520069', 1, '2024-10-04 17:43:52', NULL, NULL, 1);
+INSERT INTO `t_user` VALUES (18, 'Ligg', 'lwz', '$2a$10$GKsGL70vgKMqirlSDkmiLel5M9S6haXudDQqTNCwMhQzWhmb8v7GW', '2954494754@qq', 'https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg?r=1726915584&hd=1', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `t_user` VALUES (20, 'Ligg', 'ligg200309123', '$2a$10$GKsGL70vgKMqirlSDkmiLel5M9S6haXudDQqTNCwMhQzWhmb8v7GW', '', 'https://lain.bgm.tv/pic/crt/g/c5/3a/102125_crt_I1eZN.jpg?r=1674520069', NULL, '2024-11-08 12:10:51', NULL, NULL, NULL);
+INSERT INTO `t_user` VALUES (21, NULL, 'qwert', '76d80224611fc919a5d54f0ff9fba446', NULL, NULL, NULL, '2024-11-08 17:44:37', NULL, NULL, NULL);
+INSERT INTO `t_user` VALUES (22, '一橙', '123', '$2a$10$mA93DTAAs2cz5HIdp8DaSujp2.ywqixgHmtnBxBNFQRtos9mpQCkK', '2954494754@qq.com', 'https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg?r=1726915584&hd=1', NULL, '2024-11-08 17:45:31', NULL, NULL, 2);
+INSERT INTO `t_user` VALUES (23, '一橙', '456', '202cb962ac59075b964b07152d234b70', '2954494754@qq.com', 'https://lain.bgm.tv/pic/user/c/000/91/64/916400.jpg?r=1726915584&hd=1', NULL, '2024-11-09 22:04:01', NULL, NULL, NULL);
+INSERT INTO `t_user` VALUES (24, NULL, 'lwwww', '202cb962ac59075b964b07152d234b70', NULL, NULL, NULL, '2024-11-11 15:55:08', NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
