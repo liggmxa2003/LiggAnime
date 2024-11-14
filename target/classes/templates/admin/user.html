@@ -10,14 +10,96 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
     <style>
+        .user-card {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            transition: transform 0.3s ease;
+        }
 
+        .user-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .user-card .image {
+            padding: 1.5em !important;
+            background: linear-gradient(135deg, #00B5AD 0%, #2185D0 100%);
+        }
+
+        .user-card .image img {
+            border: 4px solid white !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .vertical.menu {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            border-radius: 0.5em !important;
+        }
+
+        .vertical.menu .item {
+            border-radius: 0.3em !important;
+            margin: 0.2em 0;
+            transition: all 0.3s ease;
+        }
+
+        .vertical.menu .item:hover {
+            background-color: #f8f9fa !important;
+            transform: translateX(5px);
+        }
+
+        .content-area {
+            background: white;
+            padding: 2em;
+            border-radius: 0.5em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .ui.form .field {
+            margin-bottom: 1.5em;
+        }
+
+        .ui.form input[readonly] {
+            background-color: #f8f9fa;
+            border-color: #e9ecef;
+        }
+
+        .ui.form label {
+            color: #495057 !important;
+            font-weight: 500 !important;
+            margin-bottom: 0.5em !important;
+        }
+
+        .ui.dividing.header {
+            padding-bottom: 1em;
+            margin-bottom: 2em;
+            color: #2185D0;
+        }
+
+        .action-buttons {
+            margin-top: 2em;
+            padding-top: 1.5em;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .stats-grid {
+            margin-top: 2em !important;
+            margin-bottom: 2em !important;
+        }
+
+        .stat-card {
+            padding: 1em;
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 0.5em;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: #e9ecef;
+        }
     </style>
 </head>
 <body>
 <!--头部导航-->
-<nav th:replace="admin/_fragments :: menu(0)">
-
-</nav>
+<nav th:replace="admin/_fragments :: menu(0)"></nav>
 <br>
 <div class="ui container grid">
     <!-- 左侧导航栏 -->
@@ -25,27 +107,27 @@
         <div class="sidebar">
             <div class="ui card user-card">
                 <div class="image">
-                    <img src="#" th:src="@{${session.user.avatar}}" alt="用户头像"
-                         style="border-radius: 50%; border: none;">
+                    <img src="#" th:src="@{${session.user.avatar}}" alt="用户头像">
                 </div>
                 <div class="content">
                     <a class="header" th:text="${session.user.nickname}">用户名</a>
                     <div class="meta">
-                        <span>普通用户</span>
+                        <span><i class="user outline icon"></i>普通用户</span>
                     </div>
                     <div class="extra content">
-                        <span>积分: 10</span>
+                        <span><i class="diamond icon"></i>积分: 10</span>
                     </div>
                 </div>
             </div>
+
             <div class="ui vertical menu">
-                <a class="item"><i class="user icon"></i> 会员信息</a>
+                <a class="active item"><i class="user icon"></i> 会员信息</a>
                 <a class="item"><i class="clock outline icon"></i> 我的记录</a>
                 <a class="item"><i class="heart icon"></i> 收藏记录</a>
                 <a class="item"><i class="gift icon"></i> 积分兑换</a>
                 <a class="item"><i class="credit card icon"></i> 充值记录</a>
                 <a class="item"><i class="tags icon"></i> 积分记录</a>
-                <a class="item" th:href="@{/admin/logout}"><i class="trash icon"></i> 退出账户</a>
+                <a class="item" th:href="@{/admin/logout}"><i class="sign-out icon"></i> 退出账户</a>
             </div>
         </div>
     </div>
@@ -53,68 +135,167 @@
     <!-- 右侧内容区域 -->
     <div class="twelve wide column">
         <div class="content-area">
-            <h2 class="ui dividing header">账户信息</h2>
-            <form action="#" th:object="${user}" th:action="@{/admin/user/update/{id}(id = ${user.id})}" method="post" class="ui form">
-                <div class="ui form user-info">
-                    <div class="field">
-                        <label>账号</label>
-                        <input type="text" placeholder="账号" value="19971481405" th:field="*{username}" readonly>
-                    </div>
-                    <div class="field">
-                        <label>密码</label>
-                        <input name="password" type="password" placeholder="修改密码" value="">
-                    </div>
-                    <div class="field">
-                        <label>邮箱</label>
-                        <input name="email" type="text" placeholder="请输入邮箱" value="" th:field="*{email}">
-                    </div>
-                    <div class="field">
-                        <label>用户名</label>
-                        <input name="nickname" type="text" placeholder="用户名" value="" th:value="*{nickname}">
-                    </div>
-                    <div class="field">
-                        <label>用户头像</label>
-                        <input name="avatar" type="text" placeholder="头像链接" value="" th:field="*{avatar}">
-                    </div>
-                    <div class="field">
-                        <label>用户组</label>
-                        <input type="text" placeholder="用户组" value="普通用户" readonly>
-                    </div>
-                    <div class="field">
-                        <label>会员期限</label>
-                        <input type="text" placeholder="会员期限" value="无" readonly>
-                    </div>
-                    <div class="field">
-                        <label>注册时间</label>
-                        <input type="text" placeholder="注册时间" value="" th:value="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}" readonly>
-                    </div>
-                    <div class="field">
-                        <label>登陆IP</label>
-                        <input type="text" placeholder="登陆IP" value="221.7.248.234" readonly>
-                    </div>
-                    <div class="field">
-                        <label>登陆时间</label>
-                        <input type="text" placeholder="登陆时间" value="2024-11-01 08:52:50" readonly>
-                    </div>
+            <h2 class="ui dividing header">
+                <i class="user icon"></i>
+                账户信息
+            </h2>
 
+            <!-- 统计信息 -->
+            <div class="ui four column grid stats-grid">
+                <div class="column">
+                    <div class="stat-card">
+                        <i class="blue video icon"></i>
+                        <h4>观看记录</h4>
+                        <p>23</p>
+                    </div>
                 </div>
-                <div style="margin-top: 20px;">
-                    <button class="ui primary button">保存</button>
-                    <button class="ui button">取消</button>
+                <div class="column">
+                    <div class="stat-card">
+                        <i class="teal heart icon"></i>
+                        <h4>收藏数</h4>
+                        <p>12</p>
+                    </div>
                 </div>
+                <div class="column">
+                    <div class="stat-card">
+                        <i class="green diamond icon"></i>
+                        <h4>积分</h4>
+                        <p>89</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="stat-card">
+                        <i class="purple trophy icon"></i>
+                        <h4>等级</h4>
+                        <p>3</p>
+                    </div>
+                </div>
+            </div>
+
+            <form action="#" th:object="${user}" th:action="@{/admin/user/update/{id}(id = ${user.id})}" method="post" class="ui form">
+                <div class="two fields">
+                    <div class="field">
+                        <label><i class="user icon"></i>账号</label>
+                        <div class="ui left icon input">
+                            <i class="id badge icon"></i>
+                            <input type="text" placeholder="账号" value="19971481405" th:field="*{username}" readonly>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label><i class="lock icon"></i>密码</label>
+                        <div class="ui left icon input">
+                            <i class="key icon"></i>
+                            <input name="password" type="password" placeholder="修改密码" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label><i class="envelope icon"></i>邮箱</label>
+                        <div class="ui left icon input">
+                            <i class="at icon"></i>
+                            <input name="email" type="text" placeholder="请输入邮箱" th:field="*{email}">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label><i class="id card icon"></i>用户名</label>
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input name="nickname" type="text" placeholder="用户名" th:value="*{nickname}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label><i class="image icon"></i>用户头像</label>
+                    <div class="ui left icon action input">
+                        <i class="photo icon"></i>
+                        <input name="avatar" type="text" placeholder="头像链接" th:field="*{avatar}">
+                        <button class="ui teal button">
+                            <i class="upload icon"></i>
+                            选择图片
+                        </button>
+                    </div>
+                </div>
+
+                <div class="three fields">
+                    <div class="field">
+                        <label><i class="users icon"></i>用户组</label>
+                        <div class="ui left icon input">
+                            <i class="user secret icon"></i>
+                            <input type="text" placeholder="用户组" value="普通用户" readonly>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label><i class="crown icon"></i>会员期限</label>
+                        <div class="ui left icon input">
+                            <i class="calendar check icon"></i>
+                            <input type="text" placeholder="会员期限" value="无" readonly>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label><i class="clock icon"></i>注册时间</label>
+                        <div class="ui left icon input">
+                            <i class="calendar plus icon"></i>
+                            <input type="text" th:value="*{#dates.format(createTime, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label><i class="wifi icon"></i>登录IP</label>
+                        <div class="ui left icon input">
+                            <i class="globe icon"></i>
+                            <input type="text" value="221.7.248.234" readonly>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label><i class="history icon"></i>登录时间</label>
+                        <div class="ui left icon input">
+                            <i class="clock outline icon"></i>
+                            <input type="text" value="2024-11-01 08:52:50" readonly>
+                        </div>
+                    </div>
+                </div>
+                    <div class="action-buttons">
+                        <button class="ui teal button" type="submit">
+                            <i class="save icon"></i>
+                            保存修改
+                        </button>
+                        <button class="ui basic button" type="reset">
+                            <i class="undo icon"></i>
+                            取消
+                        </button>
+                    </div>
             </form>
         </div>
     </div>
 </div>
 
-<!--底部footer-->
-<footer th:replace="admin/_fragments :: footer">
+<br>
+<footer th:replace="admin/_fragments :: footer"></footer>
 
-</footer>
+<th:block th:replace="admin/_fragments :: script"></th:block>
 
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
 
-<th:block th:replace="admin/_fragments :: script">
+    $('.ui.dropdown').dropdown({
+        on : 'hover'
+    });
 
-</th:block>
+    //消息提示关闭初始化
+    $('.message .close')
+            .on('click', function () {
+                $(this)
+                        .closest('.message')
+                        .transition('fade');
+            });
+
+</script>
 </body>
 </html>

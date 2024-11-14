@@ -56,7 +56,7 @@
     </select>
 
     <select id="getAllBlog" resultMap="anime">  /*后台番剧展示*/
-        select b.id, b.title, b.update_time, b.recommend, b.type_id, b.published,
+        select b.id, b.title, b.update_time, b.recommend, b.type_id, b.published,b.first_picture,
                t.id typeid, t.name typename
         from  t_anime b, t_type t
         where b.type_id = t.id    /*番剧类型id=类型id*/
