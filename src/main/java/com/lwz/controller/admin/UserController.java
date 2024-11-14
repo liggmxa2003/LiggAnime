@@ -2,6 +2,7 @@ package com.lwz.controller.admin;
 
 import com.lwz.pojo.User;
 import com.lwz.service.UserService;
+import com.lwz.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     //根据id查询用户信息
     @GetMapping("/user/{id}")

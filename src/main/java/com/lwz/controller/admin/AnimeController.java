@@ -48,7 +48,7 @@ public class AnimeController {
 
     @GetMapping("/blogs")  //后台显示番剧列表
     public String blogs(@RequestParam(required = false,defaultValue = "1",value = "pagenum")int pagenum, Model model){
-        PageHelper.startPage(pagenum, 8);
+        PageHelper.startPage(pagenum, 12);
         List<Anime> allBlog = blogService.getAllBlog();
         //得到分页结果对象
         PageInfo pageInfo = new PageInfo(allBlog);

@@ -17,7 +17,7 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    private AnimeService blogService;
+    private AnimeService animeService;
     /**
      * 处理搜索请求的控制器方法
      *
@@ -34,7 +34,7 @@ public class SearchController {
         PageHelper.startPage(pagenum, 10);
 
         // 根据搜索关键词查询数据库，获取搜索结果
-        List<Anime> searchBlog = blogService.getSearchBlog(query);
+        List<Anime> searchBlog = animeService.getSearchBlog(query);
 
         // 将搜索结果封装到PageInfo对象中，便于后续处理和传递
         PageInfo pageInfo = new PageInfo(searchBlog);

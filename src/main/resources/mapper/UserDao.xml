@@ -48,7 +48,9 @@
 
 <!--    根据账号查询用户-->
     <select id="queryUser" parameterType="String" resultMap="user">
-        select * from t_user where username = #{username}
+        select *
+        from t_user
+        where username = #{username}
     </select>
 <!--    根据id查询用户信息-->
     <select id="queryUserById" resultMap="user">

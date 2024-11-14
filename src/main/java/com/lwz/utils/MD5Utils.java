@@ -11,7 +11,7 @@ public class MD5Utils {
      * @param str 要加密的字符串
      * @return    加密后的字符串
      */
-    public static String encryptToMD5(String str){
+    public static String editUser(String str){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(str.getBytes());
@@ -39,6 +39,6 @@ public class MD5Utils {
 
 
     public static void main(String[] args) {
-        System.out.println(encryptToMD5("123456"));
+        System.out.println(editUser("123456"));
     }
 }

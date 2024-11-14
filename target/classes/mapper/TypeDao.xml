@@ -45,7 +45,8 @@
     此查询语句用于从数据库表 t_type 中选择所有记录，并将结果映射为 Type 对象列表
 -->
     <select id="getAllType" resultType="com.lwz.pojo.Type">
-        select * from t_type
+        select *
+        from t_type
     </select>
 
     <!--
