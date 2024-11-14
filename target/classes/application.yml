@@ -1,9 +1,0 @@
-spring:            #全局配置
-  thymeleaf:
-    cache: false
-  profiles:
-    active: dev
-
-
-# 设置评论者头像的默认路径
-comment.avatar: /images/avatar.jpg

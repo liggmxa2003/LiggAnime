@@ -11,7 +11,7 @@
 	<groupId>com</groupId>
 	<artifactId>blibli</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>blog</name>
+	<name>anime</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
