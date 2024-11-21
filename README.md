@@ -15,7 +15,7 @@
 3. Springboot版本： [2.2.5](https://start.spring.io/ "2.2.5")
 4. mybatis [2.1.1](https://mybatis.net.cn/ "2.1.1")
 5. 前端ui模板 [semantic-ui.](https://semantic-ui.com/ "semantic-ui.")
-6. Thymeleaf模板（用于前端发送请求、接收响应）[Thymeleaf](https://www.thymeleaf.org/ "Thymeleaf")
+6. Thymeleaf模板（用于实现前后端数据的交互）[Thymeleaf](https://www.thymeleaf.org/ "Thymeleaf")
 
 | 前端技术栈 | 后端技术栈 |
 | ---------- | ---------- |
