@@ -45,7 +45,7 @@
 
 - 创建mysql数据库
 
-  *创建名为springboot数据库并且导入项目中的springbootsql文件*
+  *创建名为springboot数据库并且导入项目中的springboot.sql文件*
  
 
 - 修改配置文件
