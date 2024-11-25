@@ -1,4 +1,4 @@
-# blibli
+# Anime
 ###### 基于springboot+mybatis开发的动漫发平台
 
 ## 下载
